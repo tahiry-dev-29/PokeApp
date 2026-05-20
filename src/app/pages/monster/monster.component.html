@@ -1,0 +1,110 @@
+<!-- @if (monsterId()) {
+   <p>monster {{monsterId()}}</p>
+   <button mat-button (click)="next()">Next</button>
+}@else {
+   <p>monster works</p>
+} -->
+
+<div class="preview">
+  <app-playing-card [my-monster]="monster" />
+</div>
+<div class="main">
+  <form [formGroup]="formGroup" (submit)="submit($event)" autocomplete="off" novalidate>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput type="text" name="name" formControlName="name" />
+      @if (isFiledValid('name')) {
+      <mat-error>This filed is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select name="type" formControlName="type">
+        @for (type of monsterTypes; track type) {
+        <mat-option [value]="type">{{ type }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-field">
+      <button mat-raised-button type="button" (click)="imageInput.click()">
+        Upload file: {{imageInput.files?.[0]?.name || '&nbsp;&nbsp;. . .'}}
+      </button>
+      <input #imageInput hidden type="file" name="image" (change)="onFileChange($event)" />
+      @if (isFiledValid('image')) {
+      <div>This filed is required</div>
+      }
+    </div>
+
+    <mat-form-field>
+      <mat-label>HP</mat-label>
+      <input matInput type="number" name="hp" formControlName="hp" />
+      @if (isFiledValid('hp')) { 
+        @if (formGroup.get('hp')?.hasError('required'))
+          {
+            <mat-error>This filed is required</mat-error>
+          } @if (formGroup.get('hp')?.hasError('min')) {
+            <mat-error>This filed must be bigger than 50</mat-error>
+          } @if (formGroup.get('hp')?.hasError('max')) {
+            <mat-error>This filed must be smaller or equal to 200</mat-error>
+          }
+     }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Figure Caption</mat-label>
+      <input matInput name="figureCaption" type="text" formControlName="figureCaption" />
+
+      @if (isFiledValid('attackName')) {
+      <mat-error>This filed is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Attack name</mat-label>
+      <input matInput name="attackName" type="text" formControlName="attackName" />
+
+      @if (isFiledValid('attackName')) {
+      <mat-error>This filed is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Attack strength</mat-label>
+      <input matInput name="attackStrength" type="number" formControlName="attackStrength" />
+
+      @if (isFiledValid('attackStrength')) { @if
+      (formGroup.get('attackStrength')?.hasError('required')) {
+      <mat-error class="error">This filed is required</mat-error>
+      } @if (formGroup.get('attackStrength')?.hasError('min')) {
+      <mat-error class="error">This filed must be bigger than 20</mat-error>
+      } @if (formGroup.get('attackStrength')?.hasError('max')) {
+      <mat-error>This filed must be smaller or equal to 100</mat-error>
+      } }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Attack Description</mat-label>
+      <textarea matInput name="attackDescription" type="text" formControlName="attackDescription"></textarea>
+
+      @if (isFiledValid('attackDescription')) {
+      <mat-error>This filed is required</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="button-container">
+
+      <button mat-button type="button" (click)="navigateBack()">
+        Back
+      </button>
+      <div class="groupe">
+        <button mat-flat-button color="blue" [disabled]="formGroup.invalid" type="sumbit">
+          Save
+        </button>
+        @if (this.monsterId !== this.monster.id) {
+        <button type="button" mat-button color="warn" (click)="deleteMonster()">
+          Delete
+        </button>
+        }
+      </div>
+    </div>
+  </form>
+</div>

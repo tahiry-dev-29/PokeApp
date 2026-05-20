@@ -1,0 +1,114 @@
+@import 'variables.scss';
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+mat-card {
+  max-width: 250px;
+  height: 450px;
+  background-color: rgba($card-background-color, $card-opacity);
+  box-shadow: $card-shadow;
+  margin: 0 auto;
+  mat-card-header {
+   padding-bottom: 10px;
+   mat-card-title-group{
+    width: 100%;
+   }
+  }
+  mat-card-title-group{
+    width: 20%;
+  }
+}
+
+.card-header,
+.capacity {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: smaller;
+  margin-bottom: 5px;
+  padding: 10px 16px;
+}
+ mat-card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.card-header .card-title,
+.name-attaque {
+  font-size: small;
+}
+
+
+.header-right ,
+.cost {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+
+.energy-icon {
+  margin-bottom: 0;
+  width: 25px;
+  height: 25px;
+}
+
+mat-card.content {
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  background-color: $card-overlay-color;
+  justify-content: space-around;
+  figcaption {
+    font-size: smaller;
+    font-weight: bold;
+    text-shadow: 0 0 black;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+figure {
+  padding: 5px 5px 0 5px;
+  margin: 0;
+  width: calc(100% - 10px);
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.capacity {
+  flex-wrap: nowrap;
+  padding: 10px 0 5px 0;
+  justify-content: space-between;
+  overflow: hidden;
+
+  .cost,
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .main {
+    width: 20%;
+  }
+
+  p.name-attaque {
+    text-wrap: nowrap;
+    margin: 0;
+  }
+}
+
+mat-card-footer p {
+  font-size: smaller;
+  margin: 0;
+  line-height: normal;
+  overflow-wrap: break-word;
+  text-indent: 3;
+}

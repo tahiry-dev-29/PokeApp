@@ -1,0 +1,38 @@
+<mat-card [style.background-color]="backgroundColor()">
+   <mat-card-header>
+     <mat-card-title>{{ monster().name }}</mat-card-title>
+     <mat-card-title-group>
+       <div class="header-right">
+         <mat-card-title>{{ monster().hp }} HP</mat-card-title>
+         <img mat-card-avatar [src]="monsterTypeIcon()" class="energy-icon" />
+       </div>
+     </mat-card-title-group>
+   </mat-card-header>
+   <mat-card class="content">
+     <figure>
+       <img mat-card-image [src]="monster().image" />
+     </figure>
+     <figcaption>{{ monster().figureCaption }} {{ monster().name }}</figcaption>
+   </mat-card>
+ 
+   <mat-card-content>
+     <div class="capacity">
+       <div class="cost">
+         <div class="main">
+           <img mat-card-avatar [src]="monsterTypeIcon()" class="energy-icon" />
+           <img mat-card-avatar [src]="monsterTypeIcon()" class="energy-icon" />
+         </div>
+         <p class="name-attaque">{{monster().attackName}}</p>
+         <mat-card-title-group>
+             <div class="damage">{{ monster().attackStrength }}</div>
+          </mat-card-title-group>
+        </div>
+     </div>
+     <mat-card-footer>
+       <p>
+         {{ monster().attackDescription }}
+       </p>
+     </mat-card-footer>
+   </mat-card-content>
+ </mat-card>
+ 

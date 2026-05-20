@@ -1,0 +1,16 @@
+<!-- <button mat-button (click)="toggleMonster()">Toggel Monster</button> -->
+<div class="actions">
+   <button mat-button  (click)="addMonster()" >Add Monster</button>
+   <app-search-bar [(search)]="search"/>
+ </div>
+ <div class="card-list">
+   @for (monster of filterMonsters(); track monster.id;) {
+   <!-- <div>Index = {{i}}</div> -->
+   <app-playing-card [my-monster]="monster" (click)="openMonster(monster)" />
+   } @empty {
+   <div class="center">No Monster found !</div>
+   }
+ </div>
+ @if (filterMonsters().length > 0) {
+ <div class="center">Founds {{ filterMonsters().length }} monster !</div>
+ }

@@ -1,5 +1,8 @@
 # Pokemon
 
+- **GitHub Repository**: https://github.com/tahiry-dev-29/PokeApp
+- **Live Demo**: https://tahiry-dev-29.github.io/PokeApp/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
 
 ## Development server
